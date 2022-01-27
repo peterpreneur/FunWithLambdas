@@ -31,7 +31,16 @@ public class LambdaExample {
 		});
 		System.out.println(transactions);
 		
+		//Lambda
 		Collections.sort(transactions, (Transaction t1, Transaction t2) -> {return t1.getDate().compareTo(t2.getDate());});
+		System.out.println(transactions);
+
+		//Lambda - shorter by removing Transaction type
+		Collections.sort(transactions, (t1, t2) -> {return t2.getDate().compareTo(t1.getDate());});
+		System.out.println(transactions);
+		
+		//Lambda - even short by removing "return..."
+		Collections.sort(transactions, (t1, t2) -> t1.getDate().compareTo(t2.getDate()));
 		System.out.println(transactions);
 
 	}
