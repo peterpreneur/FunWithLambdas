@@ -2,6 +2,7 @@ package Lambda;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -17,12 +18,22 @@ public class LambdaExample {
 	{
 		List<Transaction> transactions = new ArrayList<>();
 		
-		for (int i=0; i<200; i++) {
+		for (int i=0; i<10; i++) {
 			transactions.add(buildTransaction());
 		}
 		
+		Collections.sort(transactions, new Comparator<Transaction> () {
+
+			@Override
+			public int compare(Transaction t1, Transaction t2) {
+				return t2.getDate().compareTo(t1.getDate());
+			}			
+		});
 		System.out.println(transactions);
-		//Collections.sort(transactions);
+		
+		Collections.sort(transactions, (Transaction t1, Transaction t2) -> {return t1.getDate().compareTo(t2.getDate());});
+		System.out.println(transactions);
+
 	}
 
 	private Transaction buildTransaction() {
