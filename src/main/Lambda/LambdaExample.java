@@ -46,7 +46,6 @@ public class LambdaExample {
 		// A::B (A=class name, B=method name)
 		Collections.sort(transactions, Comparator.comparing(Transaction::getId));
 		System.out.println(transactions);
-
 	}
 
 	private Transaction buildTransaction() {
