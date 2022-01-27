@@ -20,8 +20,9 @@ public class LambdaExample {
 		for (int i=0; i<200; i++) {
 			transactions.add(buildTransaction());
 		}
-			
-		Collections.sort(transactions);
+		
+		System.out.println(transactions);
+		//Collections.sort(transactions);
 	}
 
 	private Transaction buildTransaction() {
