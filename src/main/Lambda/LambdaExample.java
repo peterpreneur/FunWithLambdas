@@ -44,8 +44,24 @@ public class LambdaExample {
 //		System.out.println(transactions);
 		
 		// A::B (A=class name, B=method name)
-		Collections.sort(transactions, Comparator.comparing(Transaction::getId));
-		System.out.println(transactions);
+//		Collections.sort(transactions, Comparator.comparing(Transaction::getId));
+//		System.out.println(transactions);
+		
+		//original forEach
+//		for (Transaction transaction: transactions) {
+//			System.out.println(transactions);	
+//		}
+		
+		//forEach in Stream
+//		transactions.stream()
+//					.forEach((transaction) -> {System.out.println(transactions);});
+
+		//forEach in Stream using Method Reference
+//		transactions.stream()
+//					.forEach(System.out::println);
+		
+		
+
 	}
 
 	private Transaction buildTransaction() {
