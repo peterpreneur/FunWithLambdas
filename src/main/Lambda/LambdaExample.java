@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -59,9 +61,29 @@ public class LambdaExample {
 		//forEach in Stream using Method Reference
 //		transactions.stream()
 //					.forEach(System.out::println);
-		
-		
 
+		//Mapping
+		long sumOfTxnIds = transactions.stream()
+									.mapToLong(Transaction::getId)
+									.sum();
+		System.out.println(sumOfTxnIds + "\n");
+		
+		List<Transaction> txnsBiggerThan500 = transactions.stream()
+															.filter(t -> t.getAmount() > 500.0)
+															.collect(Collectors.toList());
+		System.out.println(txnsBiggerThan500 + "\n");
+		
+		Optional<Transaction> firstTxnAfterTodayOpt = transactions.stream()
+					.sorted(Comparator.comparing(Transaction::getDate))
+					.filter(t -> t.getDate().after(new Date()))
+					.findFirst();
+		System.out.println(txnsBiggerThan500 + "\n");
+		
+		if(firstTxnAfterTodayOpt.isPresent()) {
+			System.out.println(firstTxnAfterTodayOpt.get() + "\n");			
+		}
+
+					
 	}
 
 	private Transaction buildTransaction() {
